@@ -1,0 +1,29 @@
+body{
+    font-family: "Montserrat";
+}
+
+footer{
+    border-top: 5px solid #009879;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    color: #fff;
+    background: rgb(205, 53, 11);
+    overflow-x:hidden;
+    position:fixed;
+}
+
+p{
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-weight:600;
+}
+
+a{
+    text-decoration: none;
+    text-transform: capitalize;
+}
