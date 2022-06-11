@@ -1,9 +1,10 @@
 <?php
   session_start();
   error_reporting(0);
-  $_SESSION['role']==1;
   $id = $_GET['updateid'];
+  include("../common/header.php");
   include("../database/connection.php");
+  include("./menu-sidebar.php");
 
     // to display the previous result of data
     $sql = "select * from `menu-item-burger` where id=$id";
@@ -81,3 +82,6 @@
     </div>
     
   </body>
+  <?php
+  include("../common/footer.php");
+?>

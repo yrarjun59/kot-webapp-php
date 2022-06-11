@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>    
 
           <div class="textbox">
-            <input type="text" name ="username" placeholder="username" value="<?php if(isset($_GET['user'])){
+            <input type="text" name ="username" placeholder="new username" value="<?php if(isset($_GET['user'])){
               echo $_GET['user'];
             }?>">
           </div>

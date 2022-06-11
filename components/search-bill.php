@@ -12,14 +12,6 @@
 <?php
     include("../database/connection.php");
     include("../common/header.php");
-
-    // $now_date = date("Y-m-d");
-    // echo $now_date;
-    // echo "<br>";
-    // echo date("Y-m-d",strtotime("tomorrow"));
-    // echo "<br>";
-    // echo date("Y-m-d",strtotime("yesterday"));
-    // echo date("Y-m-d",);
 ?>
     <body>
         <h2 style="text-align:center;">Today Bill</h2>
@@ -41,25 +33,24 @@
             </thead>
 
             <?php
+                if(isset($_GET['date'])){  
+                    $data_per_page= 4;
 
-                $data_per_page= 4;
+                    if(isset($_GET['pages'])){
+                        $page  = $_GET["pages"];
+                    }
+                    else {
+                        $page = 1;
+                    }
+                    $start_from=($page-1)*$data_per_page;
+                    $now_date = $_GET['date'];
+                    $sql = "select * from `customer-order` where `Date`='$now_date' ORDER BY `customer-order`.`Id` DESC limit $start_from,$data_per_page";
+                    $result = mysqli_query($conn, $sql);
 
-                if(isset($_GET['pages'])){
-                    $page  = $_GET["pages"];
-                }
-                else {
-                    $page = 1;
-                }
-
-                $start_from=($page-1)*$data_per_page;
-                $now_date = date("Y-m-d");
-                $sql = "select * from `customer-order` where `Date`='$now_date' ORDER BY `customer-order`.`Id` DESC limit $start_from,$data_per_page";
-                $result = mysqli_query($conn, $sql);
-
-                if(mysqli_num_rows($result)){
-                    $i = 1;
-                    $total_amount = 0;
-                    while($row = mysqli_fetch_assoc($result)){
+                    if(mysqli_num_rows($result)){
+                        $i = 1;
+                        $total_amount = 0;
+                        while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tbody>
                     <tr>
@@ -74,13 +65,14 @@
                     $i++;
                 }
             }
+        }
             ?>
             </tbody>
             </table>   
             <p style="font-weight:bold;color:white;background-color: rgb(243, 93, 12);">Total Amount = Rs <?php echo $total_amount?></p>
 
         </div>
-        <a href="bill.php" class="bill-button">Print the Bill<a>
+        <a href="#" class="bill-button">Print the Bill<a>
     <?php
         $sql = "select * from `customer-order` where `Date`='$now_date'";
         $result = mysqli_query($conn,$sql);
@@ -88,7 +80,7 @@
         $total_pages = ceil($total_data/$data_per_page);
         
         for($i=1;$i<=$total_pages;$i++){
-            echo '<a class="pagination-link" href = "bill.php?pages='.$i.'">'.$i.'</a>';
+            echo '<a class="pagination-link" href = "search-bill.php?pages='.$i.'">'.$i.'</a>';
         }
     ?>
 </html>

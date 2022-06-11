@@ -1,3 +1,17 @@
+body::before{
+    content: "";
+    background-image: url('../image/soup.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-filter: blur(5px);
+    filter:blur(5px);
+    z-index: -1;
+}
+
 .menu-items{
     margin-left: 30%;
     left:200px;
@@ -21,14 +35,25 @@ h2{
 }
 
 
+.container{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 .styled-table {
+    background-color: white;
     width:700px;
     /*height:200px; */
     border-collapse: collapse;
     font-family: "Montserrat",sans-serif;
     margin-top: 0;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+     rgba(0, 0, 0, 0.12) 0px -12px 30px,
+      rgba(0, 0, 0, 0.12) 0px 4px 6px,
+       rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
 }
 
 .styled-table thead tr {
@@ -56,7 +81,6 @@ h2{
     border-bottom: 2px solid #009879;
 }
 
-
 .styled-table tbody tr td {
     font-family: "Montserrat","monospace";
     font-weight: 500;
@@ -71,17 +95,17 @@ h2{
     width:80px;
     height:50px;
     border-radius: 3px;
-    float: right;
-    margin:0px,20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    /* float: right; */
+    margin-left: 620px;
+    margin-bottom: 0px;
 }
 
 
-.add-item a{
+ .add-item a{
     text-decoration: none;
     color:#ffffff;
     font-size:30px;
+    cursor:pointer;
 
 }
 
@@ -93,12 +117,12 @@ h2{
 
 .modify-item{
     border:none;
-    /* background-color:rgb(249, 247, 246); */
     width:80px;
     height:50px;
     border-radius: 3px;
     float: right;
     margin-top: 0px;
+
 }
 
 .modify-item a {
@@ -111,7 +135,6 @@ h2{
 .modify-item a i:nth-of-type(even) {
     background-color: #f3f3f3;
 }
-
 
 
 .success{

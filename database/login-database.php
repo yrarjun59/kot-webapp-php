@@ -17,8 +17,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             header('location:../components/login.php?error=please enter password&user='.$myusername.'');
         }
         else {
-            // $mypassword = password_hash($password,PASSWORD_DEFAULT);   
+            $mypassword = password_hash($password,PASSWORD_DEFAULT);   
             // $sql = "INSERT INTO `login-database`(`Username`, `Password`) VALUES ('$myusername','$mypassword')"; 
+
+            // $result = mysqli_query($conn,$sql);  
+            // if($result){
+            //     echo "inserted";
+            // }
+            // else{
+            //     echo "not inserted";
+            // }
                
             $sql = "SELECT * FROM `login-database` WHERE `Username`='$myusername'"; 
             $result = mysqli_query($conn,$sql);    

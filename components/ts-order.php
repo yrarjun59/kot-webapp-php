@@ -1,7 +1,11 @@
 <?php
   session_start();
+  error_reporting(0);
+  include("../common/header.php");
   include("../database/connection.php");
   $id = $_GET['order-item-id'];
+
+  include("./menu-item.php");
 
     // to display the previous result of data
     $sql = "select * from `today-special` where id=$id";
@@ -85,7 +89,7 @@
           </div>
 
           <div class="textdisplay">
-            <p>Price:<?php echo '<h4>'.$itemprice.'</h4>';?></p>
+            <p>Price:<?php echo"Rs"."&nbsp;" .'<h4>'.$itemprice.'</h4>';?></p>
           </div>
 
           <div class="textbox">
@@ -99,3 +103,6 @@
     </div>
 </body>
 <script src="../js/quantity.js"></script>
+<?php
+  include("../common/footer.php");
+?>

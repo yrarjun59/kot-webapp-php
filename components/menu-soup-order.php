@@ -1,6 +1,8 @@
 <?php
   session_start();
   error_reporting(0);
+  include("../common/header.php");
+  include("./menu-sidebar.php");
   include("../database/connection.php");
   $id = $_GET['order-item-id'];
 
@@ -62,7 +64,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Order Item</title>
-    <link rel="stylesheet" href="../css/ts-order.css">
+    <link rel="stylesheet" href="../css/menu-soup-order.css">
 </head>
   <body>
       
@@ -86,7 +88,7 @@
           </div>
 
           <div class="textdisplay">
-            <p>Price:<?php echo '<h4>'.$itemprice.'</h4>';?></p>
+            <p>Price:<?php echo "Rs"."&nbsp;"  .'<h4>'.$itemprice.'</h4>';?></p>
           </div>
 
           <div class="textbox">
@@ -99,3 +101,6 @@
         </form>
     </div>
   </body>
+<?php
+  include("../common/footer.php");
+?>

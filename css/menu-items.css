@@ -24,6 +24,10 @@ body{
 .sidebar ul li{
     list-style: none;
 }
+.sidebar ul li:active{
+    background: rgb(218, 164, 149);
+    color: white;
+}
 
 .sidebar ul li a{
     display: block;
@@ -35,15 +39,9 @@ body{
     text-decoration: none;
 }
 
-/* .auto{
-    cursor:none;
-} */
-
 .active{
-    /* pointer-events: none; */
     background: rgb(218, 164, 149);
     color:black;
-    /* cursor:none; */
 }
 
 .sidebar ul li a .icon{
@@ -59,7 +57,6 @@ body{
 
 .menu-items{
     margin-left: 30%;
-    /* border: 1px solid red; */
     width:800px;
     height:650px;
 }

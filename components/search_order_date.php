@@ -4,31 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordered Items</title>
+    <title>Search Orders</title>
     <link rel="stylesheet" href="../css/ordered-items.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 </head>
+
 <?php
     session_start();
     error_reporting(0);
     include("../common/header.php");
     include("../database/connection.php")
 ?>
-    <body>
-        <div class="search-container">
-            <form action="./search_order_date.php" method="GET">
+
+<body>
+    <div class="search-container">
+            <form action="" method="GET">
                 <div class="search-bar">
-                    <input type="date" name="date" class="date" placeholder="enter  a date to check order" required>
+                    <input type="text" name="date" class="date" placeholder="date to check order" value="<?php
+                        if(isset($_GET['date'])) echo $_GET['date'];
+                    ?>" required>
                     <input type="submit" class="search-btn" value="Search">
                 </div>
             </form>
         </div>
 
-    <h3 style="text-align:center;">Today Orders</h3>
-    <h3>Order-Page: <?php if(isset($_GET['pages'])){
-            echo $_GET['pages'];} 
+        <?php
+            $now_date = $_GET['date'];
+            $sql = "select * from `customer-order` where `Date`='$now_date'";
+            
+            if(!mysqli_num_rows(mysqli_query($conn,$sql))){
+                    echo "<p>No order on that day please search other day?</p>";
+            }
+  
             else {
-                echo "1";}?> </h3>
+            ?>
+        
+
     <div class="container">
         <table class="styled-table">
             <thead>
@@ -42,23 +53,26 @@
                 </tr>
             </thead>
 
-            <?php                
-            $data_per_page= 4;
+            <?php
+            if(isset($_GET['date'])){                
+                $data_per_page= 4;
 
-            if(isset($_GET['pages'])){
-                $page  = $_GET["pages"];
-            }
-            else {
-                $page = 1;
-            }
-            $start_from=($page-1)*$data_per_page;
-            $now_date = date("Y-m-d");
-            $sql = "select * from `customer-order` where `Date`='$now_date' ORDER BY `customer-order`.`Id` DESC limit $start_from,$data_per_page";
-            $result = mysqli_query($conn, $sql);
+                if(isset($_GET['pages'])){
+                    $page  = $_GET["pages"];
+                }
+                else {
+                    $page = 1;
+                }
+                $start_from=($page-1)*$data_per_page;
+                $now_date = $_GET['date'];
+                $sql = "select * from `customer-order` where `Date`='$now_date' ORDER BY `customer-order`.`Id` DESC limit $start_from,$data_per_page";
 
-                if(mysqli_num_rows($result)){
-                    $i = 1;
-                    while($row = mysqli_fetch_assoc($result)){
+                
+                $result = mysqli_query($conn, $sql);
+
+                    if(mysqli_num_rows($result)){
+                        $i = 1;
+                        while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tbody>
                     <tr>
@@ -86,10 +100,13 @@
                             ?>
                         </td>
                     </tr>
+                    
+                    
                     <?php
                     $i++;
                 }
             }
+        }
             ?>
             </tbody>
             </table>              
@@ -101,15 +118,16 @@
     $total_pages = ceil($total_data/$data_per_page);
     
     for($i=1;$i<=$total_pages;$i++){
-        echo '<a class="pagination-link"href="ordered-items.php?pages='.$i.'">'.$i.'<br>'.'</a>';
+        echo '<a class="pagination-link" href = "search_order_date.php?pages='.$i.'&date='.$now_date.'">'.$i.'</a>';
     }
     ?>
-    <h3 style = "text-align:center;font-family:Montserrat;bottom:0;">Page <?php echo $page?></h3>
-         <a class="bill-button" href="bill.php">Generate Bill</a>
+    <h2 style = "text-align:center;font-family:Montserrat;bottom:0;">Page <?php echo $page?> </h2>
+    <a class="bill-button" href="search-bill.php?date=<?php echo $now_date?>">Generate Bill<a>  
+    <?php
+        }
+?>
 </body>
 </html>
-
-
 <?php
     include("../common/footer.php");
 ?>

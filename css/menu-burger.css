@@ -1,92 +1,49 @@
 body::before{
     content: "";
-    background: url('../image/bill.jpg');
+    background-image: url('../image/burger.jpg');
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    -webkit-filter: blur(3px);
-    filter:blur(3px);
-    z-index: -10;
-
+    -webkit-filter: blur(5px);
+    filter:blur(5px);
+    background-size: cover;
+    z-index: -1;
 }
 
-
-.search-container{
-    position: absolute;
-    top:100px;
-    padding: 10px;
-    width: 300px;
-    margin-left: 330px;
+.menu-items{
+    margin-left: 30%;
+    left:200px;
+    width:800px;
+    height:650px;
 }
 
-.search-btn{
-    margin-left: 20px;
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    background-color:rgb(198, 82, 19);
-    cursor: pointer;
-}
-
-.bill-button{
-    position: absolute;
-    border:none;
-    padding: 10px;
-
-    background-color:rgb(198, 82, 19);
-    color: #f3f3f3;
-    border-radius: 3px;
-    left:650px;
-    top: 480px;
-}
-
-.date{
-    padding: 8px;
-    border-radius: 6px;
-}
-
-input[type="text"]{
-    outline: none;
-}
-
-.pagination-link{
-    top:460px; 
-    color: white;
-    font-size:25px;
-    margin:20px;
-}
-
-h3{
-    /* color: #d8c2bb; */
+.menu-header{
     text-align: center;
-    top:10px;
+    border-radius: 6px;
+    width: 150px;
+    height:40px;
+    background: rgb(205, 53, 11);
+    color:white;
+    font-size: 25px;
+
 }
 
-.container{
-    position:absolute;
-    left:25%;
-    top:10em;
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    border:1px solid green;
+h2{
+    top:5px
 }
+
 
 .styled-table {
-    background-color: #f3f3f3;
-    width:850px;
+    background-color: #fff;
+    width:700px;
     /*height:200px; */
     border-collapse: collapse;
     font-family: "Montserrat",sans-serif;
     margin-top: 0;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-                rgba(0, 0, 0, 0.12) 0px -12px 30px,
-                rgba(0, 0, 0, 0.12) 0px 4px 6px, 
-                rgba(0, 0, 0, 0.17) 0px 12px 13px, 
-                rgba(0, 0, 0, 0.09) 0px -3px 5px;   
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 .styled-table thead tr {
@@ -114,6 +71,7 @@ h3{
     border-bottom: 2px solid #009879;
 }
 
+
 .styled-table tbody tr td {
     font-family: "Montserrat","monospace";
     font-weight: 500;
@@ -129,16 +87,16 @@ h3{
     height:50px;
     border-radius: 3px;
     float: right;
+    margin:0px,20px;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
 
- .add-item a{
+.add-item a{
     text-decoration: none;
     color:#ffffff;
     font-size:30px;
-    cursor:pointer;
 
 }
 
@@ -156,7 +114,6 @@ h3{
     border-radius: 3px;
     float: right;
     margin-top: 0px;
-
 }
 
 .modify-item a {
@@ -169,3 +126,30 @@ h3{
 .modify-item a i:nth-of-type(even) {
     background-color: #f3f3f3;
 }
+
+
+
+.success{
+    color:#009879;
+    /* padding: 5px; */
+    font-family: "Smooch";
+    font-size: 20px;
+    width: 50%;
+  }
+  
+  .update{
+    color:orange;
+    /* padding: 5px; */
+    font-family: "Smooch";
+    font-size: 20px;
+    width: 50%;
+  
+  }
+  
+  .delete{
+    color:red;
+    /* padding: 5px; */
+    font-family: "Smooch";
+    font-size: 20px;
+    width: 50%;
+  }

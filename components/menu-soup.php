@@ -1,5 +1,8 @@
 <?php
-  include("../database/connection.php");
+    session_start();
+    error_reporting(0);
+    include("../common/header.php");
+    include("../database/connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,19 +61,25 @@
                     <tr>
                         <td><?php echo $sn?></td>
                         <td><?php echo $row['soup_name']?></td>
-                        <td><?php echo $row['soup_price']?></td>
+                        <td><?php echo"Rs ". $row['soup_price']?></td>
                         
                             <?php
                                 if($_SESSION['role']==1){
-                                echo "<td class='modifications'>
+                                    echo "
+                                    <td class='modifications'>
+                                        <button class='modify-item'>
+                                        <a href='menu-soup-update.php?updateid=$id'>
+                                                <i class='fa-solid fa-pen'></i>
+                                            </a>
+                                        </button>
+
                                     <button class='modify-item'>
-                                        <a href='menu-soup-update.php?updateid=$id'><i class='fa-solid fa-pen'></i></a></button>
-                                    <button>
-                                    <button class='modify-item'>
-                                        <a href='menu-soup-delete.php?deleteid=$id' onclick ='return checkDelete()'><i class='fa-solid fa-trash'></i></a>
-                                    <button>
-                                    </td>
-                                    ";
+                                        <a href='menu-soup-delete.php?deleteid=$id' onclick ='return checkDelete()'>
+                                            <i class='fa-solid fa-trash'></i>
+                                        </a>
+                                    </button>
+                                </td> 
+                                ";
                                 }
                                 else {
                                     ?>
@@ -104,6 +113,8 @@
     </div>
 </body>
 </html>
-
+<?php
+  include("../common/footer.php");
+?>
 <script src="../js/delete-confirm.js"></script>
 <script src="../js/add-box.js"></script>

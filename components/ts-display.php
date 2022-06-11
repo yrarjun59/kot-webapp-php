@@ -57,8 +57,7 @@
                         <?php  $sn = $row['id'] ?>
                         <td><?php echo $i?></td>
                         <td><?php echo $row['item_name']?></td>
-                        <td><?php echo $row['item_price']?></td>
-                        
+                        <td><?php echo "Rs ". $row['item_price']?></td>
                          <?php
                             if($_SESSION['role']==1){
                                 echo "

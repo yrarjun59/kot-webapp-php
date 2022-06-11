@@ -4,7 +4,7 @@ window.onload = function(){
 
 setInterval(function(){
     showPromt()
-},9000);
+},5000);
 
 function showPromt(){
     let prompt = document.querySelector('.ask-user');

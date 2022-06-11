@@ -1,7 +1,9 @@
 <?php
   session_start();
   error_reporting(0);  
+  include("../common/header.php");
   include("../database/connection.php");
+  include("./menu-item.php");
   $id = $_GET['updateid'];
   
   // to display the previous result of data
@@ -80,3 +82,6 @@
     </div>
     
   </body>
+<?php
+  include("../common/footer.php");
+?>

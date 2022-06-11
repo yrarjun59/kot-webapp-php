@@ -1,7 +1,9 @@
 <?php
   session_start();
   error_reporting(0);
+  include("../common/header.php");
   include("../database/connection.php");
+  include("./menu-sidebar.php");
   
   if(isset($_POST['submit'])){
     $_SESSION['role']==1;
@@ -83,3 +85,7 @@
     
   </body>
 </html>
+
+<?php
+  include("../common/footer.php");
+?>

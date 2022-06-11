@@ -5,6 +5,7 @@
 }
 
 .styled-table {
+    background-color: white;
     width:700px;
     /*height:200px; */
     border-collapse: collapse;

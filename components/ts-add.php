@@ -1,7 +1,10 @@
 <?php
   session_start();
   error_reporting(0);  
+  include("../common/header.php");
   include("../database/connection.php");
+  include("./menu-item.php");
+
   if(isset($_POST['submit'])){
     $_SESSION['role']=1;
     $itemname = $_POST['item-name'];
@@ -20,7 +23,7 @@
         header('location:ts-add.php?error=please enter itemprice');
       }
       else if(!is_numeric($itemprice)){
-        header('location:ts-add.php?error=please enter numberic value for price');        $_SESSION['error'] = "please enter numeric value for price";
+        header('location:ts-add.php?error=please enter numeric value for price');        $_SESSION['error'] = "please enter numeric value for price";
       }
       else {
         $checkDuplicateItem = "select * from `today-special` where item_name = '$itemname' ";
@@ -28,7 +31,7 @@
         $count = mysqli_num_rows($result4);
     
         if($count>0){
-          header('location:ts-add.php?error=please enter numberic value for price');        $_SESSION['error'] = "please enter numeric value for price";
+          header('location:ts-add.php?error=please enter numeric value for price');        $_SESSION['error'] = "please enter numeric value for price";
           }
         else {
           $sql = "insert into `today-special` (`item_name`,`item_price`) values('$itemname','$itemprice')";
@@ -79,3 +82,7 @@
     
   </body>
 </html>
+
+<?php
+  include("../common/footer.php");
+?>

@@ -1,6 +1,17 @@
-body{
-    position: relative;
+body::before{
+    content: "";
+    background: url('../image/order.jpg');
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-filter: blur(8px);
+    filter:blur(8px);
+    z-index: -10;
+
 }
+
 
 .container{
     position:absolute;
@@ -11,6 +22,8 @@ body{
 }
 
 .styled-table {
+    background-color: #ffffff;
+
     width:550px;
     border-collapse: collapse;
     font-family: "Montserrat",sans-serif;

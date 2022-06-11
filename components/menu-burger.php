@@ -2,6 +2,7 @@
     session_start();
     error_reporting(0);
     include("../database/connection.php");
+    include("../common/header.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Burger Items</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/menu-soup.css">
+    <link rel="stylesheet" href="../css/menu-burger.css">
 </head>
 <body>
     <?php
@@ -60,19 +61,25 @@
                     <tr>
                         <td><?php echo $sn?></td>
                         <td><?php echo $row['burger_name']?></td>
-                        <td><?php echo $row['burger_price']?></td>
+                        <td><?php echo"Rs ". $row['burger_price']?></td>
                         
                             <?php
                                 if($_SESSION['role']==1){
-                                    echo "<td class='modifications'>
+                                    echo "
+                                    <td class='modifications'>
                                         <button class='modify-item'>
-                                            <a href='menu-burger-update.php?updateid=$id'><i class='fa-solid fa-pen'></i></a></button>
-                                        <button>
-                                        <button class='modify-item'>
-                                            <a href='menu-burger-delete.php?deleteid=$id' onclick ='return checkDelete()'><i class='fa-solid fa-trash'></i></a>
-                                        <button>
-                                        </td>
-                                        ";
+                                        <a href='menu-burger-update.php?updateid=$id'>
+                                                <i class='fa-solid fa-pen'></i>
+                                            </a>
+                                        </button>
+
+                                    <button class='modify-item'>
+                                        <a href='menu-burger-delete.php?deleteid=$id' onclick ='return checkDelete()'>
+                                            <i class='fa-solid fa-trash'></i>
+                                        </a>
+                                    </button>
+                                </td> 
+                                ";
                                 }
                                 else {
                                     ?>
@@ -106,3 +113,20 @@
 
 <script src="../js/delete-confirm.js"></script>
 <script src="../js/add-box.js"></script>
+
+<?php
+  include("../common/footer.php");
+?>
+
+<script>
+    let  list = document.querySelectorAll('.list');
+    for(let i=0;i<list.length;i++){
+        list[i].onclick = function(){
+            let j=0;
+            while(j <list.length){
+                list[j++].className = 'list';
+            }
+            list[i].className = 'list active';
+        }
+    }
+</script>

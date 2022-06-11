@@ -21,7 +21,7 @@
 <body>
     
     <div class="container">
-        <h3 style ="text-align:center;color: #FF4742;">Your Bill</h3>
+        <!-- <h3 style ="text-align:center;color: #FF4742;font-weight:bolder; font-size:30px;">Your Bill</h3> -->
         <h4 style="text-align:center;">Your Table No: <?php echo $table_no?></h4>
         
         <?php if(isset($_GET['update'])) { ?>
@@ -52,7 +52,7 @@
                         <td><?php echo $row['Item_name']?></td>
                         <td>Rs <?php echo $row['Item_price']?></td>
                         <td><?php echo $row['Quantity']?></td>
-                        <td><?php echo $total_price =$row['Quantity']*$row['Item_price'] ?></td>
+                        <td><?php echo"Rs  ". $total_price =$row['Quantity']*$row['Item_price'] ?></td>
                         
                     </tr>
                     <?php $total_amount+= $total_price?>
@@ -65,7 +65,7 @@
             </tbody>
         </table>
         
-        <p>Total Amount = Rs <?php echo  $total_amount?></p>
+        <p style="color:violet;font-weight:500;font-size:25px;">Total Amount = Rs <?php echo  $total_amount?></p>
 
         <div class="ask-user">
             <form action="" method="post">
