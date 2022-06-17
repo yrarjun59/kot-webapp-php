@@ -12,17 +12,28 @@
 <?php
     include("../database/connection.php");
     include("../common/header.php");
+    $date = $_GET['date']
 
-    // $now_date = date("Y-m-d");
-    // echo $now_date;
-    // echo "<br>";
-    // echo date("Y-m-d",strtotime("tomorrow"));
-    // echo "<br>";
-    // echo date("Y-m-d",strtotime("yesterday"));
-    // echo date("Y-m-d",);
 ?>
     <body>
-        <h2 style="text-align:center;">Today Bill</h2>
+
+    
+    <?php
+        if(!$_GET['date']){
+            $now_date = date("Y-m-d");
+        }   
+        else{
+            $now_date = $_GET['date'];
+        }
+    
+        if($now_date==date("Y-m-d"))  {?>
+            <h3 style="text-align:center;">Today Bill</h3>
+        <?php
+            }
+            else{
+                echo '<h3 style="text-align:center;"> '.$now_date.' Bill</h3>'; 
+            }
+        ?>
         <h3>Bill Page-no: <?php if(isset($_GET['pages'])){
             echo $_GET['pages'];} 
             else {
@@ -52,7 +63,13 @@
                 }
 
                 $start_from=($page-1)*$data_per_page;
-                $now_date = date("Y-m-d");
+
+                if(!$_GET['date']){
+                    $now_date = date("Y-m-d");
+                }   
+                else{
+                    $now_date = $_GET['date'];
+                }
                 $sql = "select * from `customer-order` where `Date`='$now_date' ORDER BY `customer-order`.`Id` DESC limit $start_from,$data_per_page";
                 $result = mysqli_query($conn, $sql);
 
