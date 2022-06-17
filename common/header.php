@@ -14,7 +14,7 @@
 <body>
   <nav class="header">
       <div class="logo">
-        <h4>KOT</h4>
+        <a href="../components/home.php"><img width="100px" src="../image/logo.svg" alt="logo"></a>
       </div>
       
         <ul class="nav-links">
