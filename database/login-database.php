@@ -18,8 +18,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         else {
             $mypassword = password_hash($password,PASSWORD_DEFAULT);   
-            // $sql = "INSERT INTO `login-database`(`Username`, `Password`) VALUES ('$myusername','$mypassword')"; 
 
+            // $sql = "INSERT INTO `login-database`(`Username`, `Password`) VALUES ('$myusername','$mypassword')"; 
             // $result = mysqli_query($conn,$sql);  
             // if($result){
             //     echo "inserted";
